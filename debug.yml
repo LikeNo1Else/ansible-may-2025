@@ -1,0 +1,10 @@
+- hosts: mr_orange
+  become: yes
+  tasks:
+  - name: Install tree
+    ansible.builtin.apt:
+      name: tree
+    register: kaizen
+
+  - name: Debug
+    debug: msg="{{ kaizen }}"

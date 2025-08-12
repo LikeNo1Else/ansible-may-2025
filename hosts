@@ -1,0 +1,9 @@
+[dev]
+mr_orange ansible_host=52.206.136.19
+mr_black ansible_host=54.82.15.234
+mr_white ansible_host=3.85.84.188
+
+[qa]
+mr_brown ansible_host=54.226.177.225
+mr_blue ansible_host=100.26.137.116
+mr_pink ansible_host=98.81.81.44 ansible_user=ec2-user

@@ -1,0 +1,34 @@
+# Main Ansible file ---
+- hosts: all
+  become: yes
+  vars:
+    packages:
+      - apache2
+      - tree
+      - unzip
+    hello: world
+  tasks: 
+  - name: Install packages
+    ansible.builtin.apt:
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    when: hello=="world"  
+
+  - name: Start service apache, if not started
+    ansible.builtin.service:
+      name: apache2
+      state: started
+      enabled: yes  
+
+  - name: Add the user 
+    ansible.builtin.user:
+      name: "{{ item }}" 
+    loop:
+      - tim
+      - ann
+      - brad
+
+
+  # - name: Execute the command in remote shell
+  #   ansible.builtin.shell: useradd tim
