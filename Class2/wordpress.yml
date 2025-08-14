@@ -1,0 +1,29 @@
+- name: Download wordpress
+  ansible.builtin.get_url:
+    url: https://wordpress.org/latest.tar.gz
+    dest: /tmp/
+
+- name: Extract wordpress
+  ansible.builtin.unarchive:
+    src: /tmp/latest.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /tmp/wordpress/.
+    dest: /var/www/html
+    owner: www-data
+    group: www-data
+    mode: '0755'
+    remote_src: yes
+
+- name: Delete index.html
+  ansible.builtin.file:
+    path: /var/www/html/index.html
+    state: absent
+
+- name: Reastart service Apache
+  ansible.builtin.service:
+    name: apache2
+    state: restarted

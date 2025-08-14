@@ -1,0 +1,15 @@
+- name: Install wordpress 
+  ansible.builtin.apt:
+    name: 
+      - ghostscript
+      - libapache2-mod-php
+      - php 
+      - php-bcmath 
+      - php-curl 
+      - php-gd
+      - php-mbstring 
+      - php-xml 
+      - php-xmlrpc
+      - php-soap
+      - php-intl 
+      - php-zip
