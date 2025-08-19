@@ -1,0 +1,8 @@
+# MAIN FILE
+- hosts: all
+  become: yes
+  roles:
+    - apache
+    - database
+    - php
+    - wordpress
